@@ -38,4 +38,4 @@ jobs:
         run: yarn build
       
       - name: deploying project using surge
-        run: ./build ad-theory.surge.sh --token ${{secrets.SURGE_TOKEN}}
+        run: surge ./build ad-theory.surge.sh --token ${{secrets.SURGE_TOKEN}}
