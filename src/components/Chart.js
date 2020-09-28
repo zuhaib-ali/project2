@@ -2,20 +2,18 @@ import React from 'react';
 import {Paper, Button, Grid} from '@material-ui/core';
 import {Bar} from 'react-chartjs-2';
 
-
-let country, setCountry
 export default function ChartFunc() {
   const [countryCases, setCounrtyCases] = React.useState(); //country records.
-  [country, setCountry] = React.useState("PK");
+  const [country, setCountry] = React.useState("PK");
 
 
   //getting records country wise.
   React.useEffect(()=>{
     async function records(){
-      let res = await fetch('https://api.thevirustracker.com/free-api?countryTotal='+country);  // fetching records api.
-      setCounrtyCases(await res.json());  //updating records.
+      const res = await fetch('https://api.thevirustracker.com/free-api?countryTotal='+country);   // fetching records api.
+      const data = await res.json();
+      setCounrtyCases(data);  //updating records.
     }
-
     records();  //calling function
 
   },[country]);
